@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Cultivos_Mango.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>Mango</name>
+		<open>1</open>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65975257013631</longitude>
+				<latitude>-6.146698950026371</latitude>
+				<altitude>0</altitude>
+				<heading>5.556958835894077e-05</heading>
+				<tilt>11.40349245587601</tilt>
+				<range>2088.619384107164</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.66212758532916,-6.149661052454596,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65975257013631</longitude>
+				<latitude>-6.146698950026371</latitude>
+				<altitude>0</altitude>
+				<heading>5.556958835894077e-05</heading>
+				<tilt>11.40349245587601</tilt>
+				<range>2088.619384107164</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.66134575717113,-6.146774424221431,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65975257013631</longitude>
+				<latitude>-6.146698950026371</latitude>
+				<altitude>0</altitude>
+				<heading>5.556958835894077e-05</heading>
+				<tilt>11.40349245587601</tilt>
+				<range>2088.619384107164</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.66166743376766,-6.14794695221592,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65513920970042</longitude>
+				<latitude>-6.147937488368646</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0004386255387752669</heading>
+				<tilt>11.40347626119137</tilt>
+				<range>2079.501165526757</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.65884249276668,-6.146800527860694,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65513920970042</longitude>
+				<latitude>-6.147937488368646</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0004386255387752669</heading>
+				<tilt>11.40347626119137</tilt>
+				<range>2079.501165526757</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.65952821248882,-6.14829286319031,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Marca de posición sin título</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2021-01-19T20:51:31.786411683Z</begin>
+					<end>2021-01-19T20:51:31.986451954Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-79.65513920970042</longitude>
+				<latitude>-6.147937488368646</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0004386255387752669</heading>
+				<tilt>11.40347626119137</tilt>
+				<range>2079.501165526757</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-79.65909474216123,-6.150356920184502,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
