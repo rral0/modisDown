@@ -1,7 +1,8 @@
 # to new user
 # https://urs.earthdata.nasa.gov/users/new
-passwd <- "Hol@mundo01$"
 user   <- "rral"
+passwd <- "Hol@mundo01$"
 
+cat("El usuario es: ", user)
 # to login
 # https://urs.earthdata.nasa.gov/home
