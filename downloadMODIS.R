@@ -16,8 +16,8 @@ data_path <- "data/"
 source("credentials.R")
 
 # Setting start and end of download time
-start <- "2021-03-01"
-end   <- "2021-03-30"
+start <- "2021-01-01"
+end   <- "2021-01-31"
 
 # downloading MODIS data using the above parameters
 f <- getModis(product = product, start_date = start,
