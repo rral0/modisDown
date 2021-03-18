@@ -1,14 +1,22 @@
+rm(list = ls(all.names = T))
+
 library(raster)
 list_data <- list.files("D:/Ci_data/TIF/", full.names = T, pattern = "*.tif")
 datos <- stack(list_data)
-# nlayers(datos)
-# dim(datos)
+# proj4string(datos)
+nlayers(datos)
+dim(datos)
 plot(datos[[1]])
 e <- drawExtent()
-save(e, file = "e_test.RData")
-all <- crop(datos, e)
+load("data/area_mas_peque.RData")
 
-# writeRaster(all, filename = "all_data_crop.tif", format = "GTiff", 
-#             overwrite = TRUE)
-nombre <- paste0("D:/Ci_data/TIF_Crop/", names(all), "_crop.tif")
-writeRaster(all, filename = nombre, bylayer = TRUE, format = "GTiff")
+# save(e, file = "e_test.RData")
+rasterOptions(progress = 'text', timer = TRUE)
+
+data_crop <- crop(datos, e)
+dim(data_crop)
+names(data_crop)
+
+nombre <- paste0("D:/Ci_data/TIF_Crop/", names(data_crop), "_crop.tif")
+writeRaster(data_crop, filename = nombre, bylayer = TRUE, 
+            format = "GTiff", overwrite = TRUE)
