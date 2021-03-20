@@ -1,3 +1,4 @@
+# rm(list = ls(all.names = T))
 # changing the working directory (need rstudioapi package)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 # rstudioapi: only under RStudio IDE
@@ -9,49 +10,53 @@ lapply(pkgs, require, character.only = TRUE)
 
 source("functions.R")
 
-
 # product MODIS to download
 product <- "MOD13Q1"
 
-# loading shapefile of area of interest (aoi)
-area <- shapefile("data/shp_pts_mangos/Cultivos_Mango.shp")
-ext  <- extent(area)
 data_path <- "D:/Ci_data/TIF_Crop/"
-crop_data <- list.files(data_path)
-
-source("credentials.R")
-
+crop_data_name <- list.files(data_path)
+to_read <- paste0(data_path, crop_data_name)
 month <- c(paste0("0",1:9),10:12)
+momo <- 1:12
 for (i in 2010:2021) {
   # i <- 2010
+  index_year_posi <- year_extraction(crop_data_name, i)
+  
   cat("Datos para:", i,"\n")
   if (i == 2021) {
-    month <- month[1:2]
+    momo <- momo[1:2] # TODO: improve this syntax
   }
-  for (j in month) {
-    # j <- month[1]
-    cat("Mes:", j,"\n")
-    # Setting start and end of download time
-    start <- paste0(i, "-", j, "-01")
-    end   <- paste0(i, "-", j, ifelse(j == "02", "-28", "-30"))
-    # downloading MODIS data using the above parameters
-    f <- getModis(product = product, start_date = c("2010-01-01"),
-                  end_date = c("2010-12-31"), aoi = ext, download = FALSE,
-                  path = data_path, username = user,
-                  password = passwd, overwrite = TRUE)
-    f <- f[which(str_detect(f, ".h10v09.006.") == TRUE)]
-    idx <- which(substr(crop_data, 1, 41) %in% substr(f, 1, 41) == TRUE)
+  
+  for (j in momo) {
+    # j <- 10
+    cat("Mes:", month[j],"\n")
     
-    dato <- stack(paste0(data_path, crop_data[idx]))
-    alli <- stack(mini(dato), meani(dato), maxi(dato))
-    
-    if (leap_year(i)) {
+      name_min  <- paste0("D:/Ci_data/Stat/monthly/min/NDVI_", i, "_",
+                          month[j], "_min.tif")
+      name_mean <- paste0("D:/Ci_data/Stat/monthly/mean/NDVI_", i, "_",
+                          month[j], "_mean.tif")
+      name_max  <- paste0("D:/Ci_data/Stat/monthly/max/NDVI_", i, "_",
+                          month[j], "_max.tif")
       
+    # stack
+    if (length(idx_month(j, i)) != 1) {
+      tmp_month <- stack(to_read[index_year_posi[idx_month(j, i)]])
+      # calc
+      minii  <- mini(tmp_month)
+      meanii <- meani(tmp_month)
+      maxii  <- maxi(tmp_month)
+      # names
+      
+      # save raster
+      writeRaster(minii, filename = name_min, format = "GTiff", overwrite = TRUE)
+      writeRaster(meanii, filename = name_mean, format = "GTiff", overwrite = TRUE)
+      writeRaster(maxii, filename = name_max, format = "GTiff", overwrite = TRUE)
     }else{
+      tmp_month <- raster(to_read[index_year_posi[idx_month(j, i)]])
       
+      writeRaster(tmp_month, filename = name_min, format = "GTiff", overwrite = TRUE)
+      writeRaster(tmp_month, filename = name_mean, format = "GTiff", overwrite = TRUE)
+      writeRaster(tmp_month, filename = name_max, format = "GTiff", overwrite = TRUE)
     }
-    save_name <- paste0("D:/Ci_data/Stat/NDVI_Min_Mean_Max_", i, "_",j, ".tif")
-    writeRaster(alli, filename = save_name, format = "GTiff", overwrite = TRUE)
-
   }
 }
