@@ -5,18 +5,36 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 cat("Working directory: ", getwd())
 
 # loading all dependency packages
-pkgs <- c("terra", "luna", "raster", "stringr", "lubridate")
+pkgs <- c("terra", "raster", "stringr", "lubridate")
 lapply(pkgs, require, character.only = TRUE)
 
 source("functions.R")
 
-# product MODIS to download
-product <- "MOD13Q1"
+data_path <- "data/TIF_crop/"
 
-data_path <- "D:/Ci_data/TIF_Crop/"
+indice <- "EVI"
+
+stat_path  <- "data/Stat/"
+
 crop_data_name <- list.files(data_path)
+cuantos <- length(crop_data_name) * 6
+
 to_read <- paste0(data_path, crop_data_name)
-month <- c(paste0("0",1:9),10:12)
+
+if (indice == "NDVI") {
+  aaa <- 1
+}else{
+  aaa <- 2
+}
+
+indice_posi <- seq(aaa, cuantos, 6)
+
+indice_stack <- stack(to_read)[[indice_posi]]
+class(indice_stack)
+dim(indice_stack)
+names(indice_stack)
+
+month <- c(paste0("0", 1:9), 10:12)
 momo <- 1:12
 for (i in 2010:2021) {
   # i <- 2010
@@ -28,35 +46,40 @@ for (i in 2010:2021) {
   }
   
   for (j in momo) {
-    # j <- 10
+    # j <- 1
     cat("Mes:", month[j],"\n")
     
-      name_min  <- paste0("D:/Ci_data/Stat/monthly/min/NDVI_", i, "_",
-                          month[j], "_min.tif")
-      name_mean <- paste0("D:/Ci_data/Stat/monthly/mean/NDVI_", i, "_",
-                          month[j], "_mean.tif")
-      name_max  <- paste0("D:/Ci_data/Stat/monthly/max/NDVI_", i, "_",
+    # names to save
+    name_min  <- paste0(stat_path, indice, "/", indice, "_", i, "_",
+                        month[j], "_min.tif")
+    name_mean <- paste0(stat_path, indice, "/", indice, "_", i, "_",
+                        month[j], "_mean.tif")
+    name_max  <- paste0(stat_path, indice, "/", indice, "_", i, "_",
                           month[j], "_max.tif")
-      
-    # stack
-    if (length(idx_month(j, i)) != 1) {
-      tmp_month <- stack(to_read[index_year_posi[idx_month(j, i)]])
+    
+    idx_mes <- idx_month(j, i)
+    
+    tmp_month <- indice_stack[[index_year_posi[idx_mes]]]
+
+    if (length(idx_mes) != 1) {
       # calc
-      minii  <- mini(tmp_month)
-      meanii <- meani(tmp_month)
-      maxii  <- maxi(tmp_month)
-      # names
-      
+      minii  <- mini(tmp_month) / 100000000
+      meanii <- meani(tmp_month) / 100000000
+      maxii  <- maxi(tmp_month) / 100000000
       # save raster
-      writeRaster(minii, filename = name_min, format = "GTiff", overwrite = TRUE)
-      writeRaster(meanii, filename = name_mean, format = "GTiff", overwrite = TRUE)
-      writeRaster(maxii, filename = name_max, format = "GTiff", overwrite = TRUE)
+      writeRaster(minii, filename = name_min, format = "GTiff", 
+                  overwrite = TRUE)
+      writeRaster(meanii, filename = name_mean, format = "GTiff", 
+                  overwrite = TRUE)
+      writeRaster(maxii, filename = name_max, format = "GTiff", 
+                  overwrite = TRUE)
     }else{
-      tmp_month <- raster(to_read[index_year_posi[idx_month(j, i)]])
-      
-      writeRaster(tmp_month, filename = name_min, format = "GTiff", overwrite = TRUE)
-      writeRaster(tmp_month, filename = name_mean, format = "GTiff", overwrite = TRUE)
-      writeRaster(tmp_month, filename = name_max, format = "GTiff", overwrite = TRUE)
+      writeRaster(tmp_month, filename = name_min, format = "GTiff", 
+                  overwrite = TRUE)
+      writeRaster(tmp_month, filename = name_mean, format = "GTiff", 
+                  overwrite = TRUE)
+      writeRaster(tmp_month, filename = name_max, format = "GTiff", 
+                  overwrite = TRUE)
     }
   }
 }
