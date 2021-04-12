@@ -12,7 +12,8 @@ source("functions.R")
 
 data_path <- "data/TIF_crop/"
 
-indice <- "EVI"
+indice <- "NDVI"
+# indice <- "EVI"
 
 stat_path_all  <- "data/Stat/All/"
 
@@ -34,6 +35,7 @@ indice_stack <- stack(to_read)[[indice_posi]]
 minii  <- mini(indice_stack) / 100000000
 meanii <- meani(indice_stack) / 100000000
 maxii  <- maxi(indice_stack) / 100000000
+
 sdii   <- sdi(indice_stack) / 100000000
 
 plot(minii)
