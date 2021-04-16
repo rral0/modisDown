@@ -1,6 +1,7 @@
-maxi  <- function(x) calc(x, max, na.rm = T) 
-mini  <- function(x) calc(x, min, na.rm = T)
+maxi  <- function(x) calc(x, fun = max, na.rm = T) 
+mini  <- function(x) calc(x, fun = min, na.rm = T)
 meani <- function(x) calc(x, fun = mean, na.rm = T)
+sdi   <- function(x) calc(x, fun = sd, na.rm = T)
 
 subsi <- function(x, n=1,m=0){
   substr(x, nchar(x)-n-m+1, nchar(x)-m)
@@ -47,3 +48,31 @@ idx_month <- function(monty, i){
   )
   return(mm)
 }
+
+to_mat <- function(x, name_pts){
+  x %>% unlist() %>% matrix(nrow = 134) %>% 
+    ts(start = c(2010, 01), frequency = 12) %>% 
+    `colnames<-`(name_pts)
+}
+
+to_mat1 <- function(x, name_pts){
+  x %>% unlist() %>% matrix(nrow = 132) %>% 
+    ts(start = c(2010, 01), frequency = 12) %>% 
+    `colnames<-`(name_pts)
+}
+
+to_prom <- function(x){
+  prome <- x %>% apply(1, mean) %>% ts(start = c(2010, 01), 
+                                       frequency = 12)
+  return(prome)
+}
+
+# idx_seasonal <- function(seaso, i){
+#   seas <- switch(seaso,
+#                  winter = c(1:5) ,
+#                  spring = c(6:11) ,
+#                  summer = c(12:17) ,
+#                  autumn = c(18:23) 
+#                  )
+#   return(seas)
+# }
